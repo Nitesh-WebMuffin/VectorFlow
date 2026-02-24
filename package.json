@@ -1,0 +1,42 @@
+{
+  "name": "vectorflow",
+  "version": "1.0.0",
+  "description": "A minimal, JSON-driven SVG pose animation library",
+  "main": "dist/vectorflow.umd.js",
+  "module": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "scripts": {
+    "build": "webpack --mode production",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "svg",
+    "animation",
+    "pose",
+    "vectorflow",
+    "svg-animation",
+    "character-animation",
+    "json-driven"
+  ],
+  "author": "Nitesh-WebMuffin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nitesh-WebMuffin/vectorflow.git"
+  },
+  "homepage": "https://github.com/Nitesh-WebMuffin/vectorflow#readme",
+  "bugs": {
+    "url": "https://github.com/Nitesh-WebMuffin/vectorflow/issues"
+  },
+  "dependencies": {
+    "animejs": "^3.2.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.97.0",
+    "webpack-cli": "^6.0.0"
+  }
+}

@@ -1,0 +1,6 @@
+# Ignore everything except what ships in the package
+# (The "files" field in package.json controls npm publish)
+# This .npmignore keeps the repo clean for npm
+webpack.config.js
+.gitignore
+.github/
