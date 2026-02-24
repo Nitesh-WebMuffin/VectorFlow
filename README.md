@@ -4,6 +4,7 @@ A minimal, JSON-driven SVG pose animation library.
 
 [![npm version](https://img.shields.io/npm/v/@nitesh-tyagi/vectorflow.svg)](https://www.npmjs.com/package/@nitesh-tyagi/vectorflow)
 [![license](https://img.shields.io/npm/l/@nitesh-tyagi/vectorflow.svg)](LICENSE)
+[![Try the Demo](https://img.shields.io/badge/demo-Live%20Player-e94560?style=flat-square)](https://vectorflow.webmuffin.io/)
 
 ---
 
@@ -25,10 +26,13 @@ VectorFlow loads an SVG containing multiple **pose states** and a JSON config de
 ## Table of Contents
 
 - [Quick Start](#quick-start)
+- [Live Demo](#live-demo)
 - [Preparing Your SVG](#preparing-your-svg)
 - [Writing the JSON Config](#writing-the-json-config)
+- [Sample Files](#sample-files)
 - [API Reference](#api-reference)
 - [Full Example](#full-example)
+- [Links](#links)
 - [License](#license)
 
 ---
@@ -68,6 +72,21 @@ vf.play('left');       // play an action
 vf.play('shuffle');    // auto-cancels previous, starts new
 vf.stop();             // cancel current playback
 ```
+
+---
+
+## Live Demo
+
+Try VectorFlow instantly — no install required:
+
+**[vectorflow.webmuffin.io](https://vectorflow.webmuffin.io/)**
+
+1. Download the [sample SVG](https://github.com/Nitesh-WebMuffin/SVG-Animator/blob/main/demo-files/Shapes.svg) and [sample JSON](https://github.com/Nitesh-WebMuffin/SVG-Animator/blob/main/demo-files/Shapes.json)
+2. Open the [Demo Player](https://vectorflow.webmuffin.io/)
+3. Upload both files and click **Load & Play**
+4. Use the action buttons to trigger animations
+
+The demo player source is at [Nitesh-WebMuffin/SVG-Animator](https://github.com/Nitesh-WebMuffin/SVG-Animator).
 
 ---
 
@@ -283,6 +302,19 @@ action.ms  >  routes[target].ms  >  json.ms  >  120ms (fallback)
 
 ---
 
+## Sample Files
+
+Ready-to-use sample files are available in the [demo-files](https://github.com/Nitesh-WebMuffin/SVG-Animator/tree/main/demo-files) folder:
+
+| File | Description |
+|------|-------------|
+| [`Shapes.svg`](https://github.com/Nitesh-WebMuffin/SVG-Animator/blob/main/demo-files/Shapes.svg) | SVG with 3 pose states: left, center, right |
+| [`Shapes.json`](https://github.com/Nitesh-WebMuffin/SVG-Animator/blob/main/demo-files/Shapes.json) | JSON config with routes, actions, and a shuffle loop |
+
+Download both and pass them to VectorFlow, or upload them to the [Live Demo Player](https://vectorflow.webmuffin.io/).
+
+---
+
 ## API Reference
 
 ### Constructor
@@ -411,6 +443,18 @@ vf.on('stateChange', (state) => {
 // Clean up when done
 window.addEventListener('beforeunload', () => vf.destroy());
 ```
+
+---
+
+## Links
+
+| Resource | URL |
+|----------|-----|
+| npm | [@nitesh-tyagi/vectorflow](https://www.npmjs.com/package/@nitesh-tyagi/vectorflow) |
+| Live Demo | [vectorflow.webmuffin.io](https://vectorflow.webmuffin.io/) |
+| Demo Source | [Nitesh-WebMuffin/SVG-Animator](https://github.com/Nitesh-WebMuffin/SVG-Animator) |
+| Sample Files | [demo-files/](https://github.com/Nitesh-WebMuffin/SVG-Animator/tree/main/demo-files) |
+| Docs | [docs/](https://github.com/Nitesh-WebMuffin/SVG-Animator/tree/main/docs) |
 
 ---
 
