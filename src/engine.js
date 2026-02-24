@@ -78,20 +78,19 @@ export function expandSequence(order, currentState, routes, actionMs, jsonMs, va
   const steps = [];
   let current = currentState;
 
-  for (const targetState of order) {
-    // Validate state exists
-    if (validStates && !validStates.has(targetState)) {
-      throw new Error(`VectorFlow: State not found in SVG: "${targetState}"`);
-    }
+  for (const routeKey of order) {
+    // Resolve the route — routeKey can be a route key OR a state name
+    const path = normalizePath(resolvePath(routeKey, current, routes), current);
 
-    const path = normalizePath(resolvePath(targetState, current, routes), current);
+    if (path.length === 0) continue;
 
+    // Validate that resolved path entries are real states
     for (const nextState of path) {
       if (validStates && !validStates.has(nextState)) {
-        throw new Error(`VectorFlow: State not found in SVG: "${nextState}"`);
+        throw new Error(`VectorFlow: Route "${routeKey}" resolves to unknown state "${nextState}"`);
       }
 
-      const routeMs = routes[nextState]?.ms;
+      const routeMs = routes[routeKey]?.ms ?? routes[nextState]?.ms;
       const ms = resolveMs(actionMs, routeMs, jsonMs);
       steps.push({ state: nextState, ms });
       current = nextState;
@@ -116,15 +115,20 @@ export function expandDirect(order, currentState, routes, actionMs, jsonMs, vali
   const steps = [];
   let current = currentState;
 
-  for (const targetState of order) {
+  for (const routeKey of order) {
+    // In direct mode, resolve the route to find the final destination state
+    const path = resolvePath(routeKey, current, routes);
+    // Use the last state in the resolved path as the target
+    const targetState = path[path.length - 1];
+
     if (validStates && !validStates.has(targetState)) {
-      throw new Error(`VectorFlow: State not found in SVG: "${targetState}"`);
+      throw new Error(`VectorFlow: Route "${routeKey}" resolves to unknown state "${targetState}"`);
     }
 
-    // In direct mode, skip if already at target
+    // Skip if already at target
     if (targetState === current) continue;
 
-    const routeMs = routes[targetState]?.ms;
+    const routeMs = routes[routeKey]?.ms ?? routes[targetState]?.ms;
     const ms = resolveMs(actionMs, routeMs, jsonMs);
     steps.push({ state: targetState, ms });
     current = targetState;

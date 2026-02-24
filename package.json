@@ -1,6 +1,6 @@
 {
-  "name": "vectorflow",
-  "version": "1.0.0",
+  "name": "@nitesh-tyagi/vectorflow",
+  "version": "1.0.2",
   "description": "A minimal, JSON-driven SVG pose animation library",
   "main": "dist/vectorflow.umd.js",
   "module": "src/index.js",
